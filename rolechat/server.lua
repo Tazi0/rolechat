@@ -4,27 +4,27 @@
 -- add_ace Adminrole taz.admin allow
 -- add_principal identifier.steam:[hexid] Adminrole
 
-local Owner = "taz.owner"
-local Management = "taz.management"
-local Senior_Admin = "taz.snradmin"
-local Admin = "taz.admin"
-local Moderator = "taz.mod"
-local Tmod = "taz.tmod"
+local Owner = "owner"
+local Management = "management"
+local Senior_Admin = "snradmin"
+local Admin = "admin"
+local Moderator = "mod"
+local Tmod = "tmod"
 
 AddEventHandler('chatMessage', function(source, Name, Msg)
     args = stringsplit(Msg, " ")
     CancelEvent()
-          if IsPlayerAceAllowed(source, Owner) then
+          if exports.discord_perms:IsRolePresent(user, Owner) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^1Owner ^7] (^3 " .. Name.." ^7)", "^8"..Msg }, color = 255, 0, 0 })
-          elseif IsPlayerAceAllowed(source, Management) then
+          elseif exports.discord_perms:IsRolePresent(user, Management) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^5Management ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-          elseif IsPlayerAceAllowed(source, Senior_Admin) then
+          elseif exports.discord_perms:IsRolePresent(user, Senior_Admin) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8Senior Admin ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-          elseif IsPlayerAceAllowed(source, Admin) then
+          elseif exports.discord_perms:IsRolePresent(user, Admin) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8Admin ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-	        elseif IsPlayerAceAllowed(source, Moderator) then
+	        elseif exports.discord_perms:IsRolePresent(user, Moderator) then
              TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8Moderator ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-	        elseif IsPlayerAceAllowed(source, Tmod) then
+	        elseif exports.discord_perms:IsRolePresent(user, Tmod) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8T-Mod ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
           else
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^4Member ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
