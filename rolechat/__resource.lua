@@ -1,1 +1,4 @@
-server_script "server.lua"
+server_scripts {
+  "server.lua",
+  "config.lua"
+}
