@@ -4,13 +4,6 @@
 -- add_ace Adminrole taz.admin allow
 -- add_principal identifier.steam:[hexid] Adminrole
 
-local Owner = "taz.owner"
-local Management = "taz.management"
-local Senior_Admin = "taz.snradmin"
-local Admin = "taz.admin"
-local Moderator = "taz.mod"
-local Tmod = "taz.tmod"
-
 AddEventHandler('chatMessage', function(source, Name, Msg)
     args = stringsplit(Msg, " ")
     CancelEvent()
@@ -42,3 +35,36 @@ function stringsplit(inputstr, sep)
     end
     return t
 end
+
+
+-- version checker
+local CurrentVersion = '1.3'
+local GithubResourceName = 'roleschat'
+local githubacct = "Tazi0"
+local resourceName = GetCurrentResourceName()
+local versionurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/VERSION"
+local changesurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/CHANGES"
+
+PerformHttpRequest(versionurl, function(Error, NewestVersion, Header)
+	PerformHttpRequest(changesurl, function(Error, Changes, Header)
+		print('\n')
+		print('====================================================================')
+		print('')
+		print('ChatRoles ('..resourceName..')')
+		print('')
+		print('Current Version: ' .. CurrentVersion)
+		print('Newest Version: ' .. NewestVersion)
+		print('you can download the newest version at: \n https://github.com/'..githubacct.."/"..GithubResourceName.."/")
+		io.write("")
+		print('Changelog: \n' .. Changes)
+		print('')
+		if CurrentVersion ~= NewestVersion then
+			print('====================================================================')
+		else
+			print('===================')
+			print('=== Up to date! ===')
+			print('===================')
+		end
+		print('\n')
+end)
+end)
