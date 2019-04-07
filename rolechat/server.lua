@@ -4,13 +4,6 @@
 -- add_ace Adminrole taz.admin allow
 -- add_principal identifier.steam:[hexid] Adminrole
 
-local Owner = "owner"
-local Management = "management"
-local Senior_Admin = "snradmin"
-local Admin = "admin"
-local Moderator = "mod"
-local Tmod = "tmod"
-
 AddEventHandler('chatMessage', function(source, Name, Msg)
     args = stringsplit(Msg, " ")
     CancelEvent()
