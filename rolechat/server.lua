@@ -35,3 +35,36 @@ function stringsplit(inputstr, sep)
     end
     return t
 end
+
+
+-- version checker
+local CurrentVersion = '1.3'
+local GithubResourceName = 'roleschat'
+local githubacct = "Rhys19"
+local resourceName = GetCurrentResourceName()
+local versionurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/VERSION"
+local changesurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/CHANGES"
+
+PerformHttpRequest(versionurl, function(Error, NewestVersion, Header)
+	PerformHttpRequest(changesurl, function(Error, Changes, Header)
+		print('\n')
+		print('====================================================================')
+		print('')
+		print('ChatRoles ('..resourceName..')')
+		print('')
+		print('Current Version: ' .. CurrentVersion)
+		print('Newest Version: ' .. NewestVersion)
+		print('you can download the newest version at: \n https://github.com/'..githubacct.."/"..GithubResourceName.."/")
+		io.write("")
+		print('Changelog: \n' .. Changes)
+		print('')
+		if CurrentVersion ~= NewestVersion then
+			print('====================================================================')
+		else
+			print('===================')
+			print('=== Up to date! ===')
+			print('===================')
+		end
+		print('\n')
+end)
+end)
