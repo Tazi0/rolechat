@@ -7,17 +7,17 @@
 AddEventHandler('chatMessage', function(source, Name, Msg)
     args = stringsplit(Msg, " ")
     CancelEvent()
-          if exports.discord_perms:IsRolePresent(user, Owner) then
+          if exports.discord_perms:IsRolePresent(source, Owner) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^1Owner ^7] (^3 " .. Name.." ^7)", "^8"..Msg }, color = 255, 0, 0 })
-          elseif exports.discord_perms:IsRolePresent(user, Management) then
+          elseif exports.discord_perms:IsRolePresent(source, Management) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^5Management ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-          elseif exports.discord_perms:IsRolePresent(user, Senior_Admin) then
+          elseif exports.discord_perms:IsRolePresent(source, Senior_Admin) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8Senior Admin ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-          elseif exports.discord_perms:IsRolePresent(user, Admin) then
+          elseif exports.discord_perms:IsRolePresent(source, Admin) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8Admin ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-	        elseif exports.discord_perms:IsRolePresent(user, Moderator) then
+	        elseif exports.discord_perms:IsRolePresent(source, Moderator) then
              TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8Moderator ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
-	        elseif exports.discord_perms:IsRolePresent(user, Tmod) then
+	        elseif exports.discord_perms:IsRolePresent(source, Tmod) then
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^8T-Mod ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
           else
               TriggerClientEvent('chat:addMessage', -1, { args = { "^7[ ^4Member ^7] (^3 " .. Name.." ^7)", Msg }, color = 255,255,255 })
@@ -39,8 +39,8 @@ end
 
 -- version checker
 local CurrentVersion = '1.3'
-local GithubResourceName = 'roleschat'
-local githubacct = "Rhys19"
+local GithubResourceName = 'discordperms'
+local githubacct = "Tazi0"
 local resourceName = GetCurrentResourceName()
 local versionurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/VERSION"
 local changesurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/CHANGES"

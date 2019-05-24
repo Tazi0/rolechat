@@ -10,12 +10,12 @@ Latest Server Build <br>
 [Linux](https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/)
 
 # Installation
-1. Download roleschat from my discordperms-version branch!
-2. Install it into /resources/<resourceName>
-3. setup your discord perms inside config.lua
-4. make sure discord_perms is setup **BEFORE** you start roleschat ;) -- otherwise this script will not run!
-5. test out your chat!
-6. any issues with the discord perms version must be reported on github issues as i will respond to see if i can fix it ;)
+1. Download roleschat from my discordperms branch!
+2. Install it into `/resources/`
+3. Setup your discord perms inside config.lua
+4. Make sure discord_perms is setup **BEFORE** you start roleschat ;) -- otherwise this script will not run!
+5. Test out your chat!
+6. Any issues with the discord perms version must be reported on github issues as i will respond to see if i can fix it :)
 
 # Credits
 * IllulsiveTea - Discord Perms
