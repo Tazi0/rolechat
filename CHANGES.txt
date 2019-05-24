@@ -1,2 +1,9 @@
-Added Discord Perms
-Added Version Checker
+v1.4
+-Fixed version checker
+-Fixed Role export
+
+-Working on: Faster text (it takes way to long currently)
+
+v1.3
+-Added Discord Perms
+-Added Version Checker

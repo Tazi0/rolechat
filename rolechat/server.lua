@@ -38,33 +38,32 @@ end
 
 
 -- version checker
-local CurrentVersion = '1.3'
-local GithubResourceName = 'discordperms'
+local Githubname = "Role Chat"
+local CurrentVersion = "1.4"
+local GithubResourceName = "rolechat"
+local GithubBranch = "discordperms"
 local githubacct = "Tazi0"
 local resourceName = GetCurrentResourceName()
-local versionurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/VERSION"
-local changesurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/master/CHANGES"
+local versionurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/"..GithubBranch.."/VERSION.txt"
+local changesurl = "https://raw.githubusercontent.com/"..githubacct.."/"..GithubResourceName.."/"..GithubBranch.."/CHANGES.txt"
 
 PerformHttpRequest(versionurl, function(Error, NewestVersion, Header)
-	PerformHttpRequest(changesurl, function(Error, Changes, Header)
-		print('\n')
-		print('====================================================================')
-		print('')
-		print('ChatRoles ('..resourceName..')')
-		print('')
-		print('Current Version: ' .. CurrentVersion)
-		print('Newest Version: ' .. NewestVersion)
-		print('you can download the newest version at: \n https://github.com/'..githubacct.."/"..GithubResourceName.."/")
-		io.write("")
-		print('Changelog: \n' .. Changes)
-		print('')
-		if CurrentVersion ~= NewestVersion then
-			print('====================================================================')
-		else
-			print('===================')
-			print('=== Up to date! ===')
-			print('===================')
-		end
-		print('\n')
-end)
+  PerformHttpRequest(changesurl, function(Error, Changes, Header)
+    print('\n')
+    print('====================================================================')
+    print('')
+    print(Githubname .. ' ( ' .. resourceName .. ' )')
+    print('')
+    if NewestVersion >= CurrentVersion then
+      print('Looks like your missing out on an update! \n')
+      print('Current Version: ' .. CurrentVersion)
+      print('Newest Version: ' .. NewestVersion)
+      print('You can download the newest version at: https://github.com/'..githubacct.."/"..GithubResourceName.."/")
+      print("")
+      print('Changelog: \n' .. Changes)
+    else
+      print('Up to date!\n')
+      print('====================================================================')
+    end
+  end)
 end)
